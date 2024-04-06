@@ -34,7 +34,7 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 
-# invalid internal server error
+# invalid internal server error page
 @app.errorhandler(500)
 def page_not_found(e):
     return render_template('500.html'), 500
