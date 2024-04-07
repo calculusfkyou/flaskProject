@@ -5,8 +5,10 @@
     <title>user</title>
 </head>
 <body>
-    <h1>Hello {{ user_name }}</h1>
-    <h1>Hello {{ user_name|upper }}</h1>
-    <h1>Hello {{ user_name|capitalize }}</h1>
+    {% extends 'base.html' %}
+
+    {% block content %}
+        <h1>Hello {{ user_name|title }}</h1>
+    {% endblock %}
 </body>
 </html>
