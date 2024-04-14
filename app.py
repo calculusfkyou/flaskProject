@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, flash
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired  # 檢查資料是否為空
@@ -23,6 +23,7 @@ class NameForm(FlaskForm):
 def index():
     first_name = 'John'
     favorite_pizza = ['Pepperoni', 'Cheese', 'Mushrooms', 41]
+
     return render_template('index.html', first_name=first_name,
                            favorite_pizza=favorite_pizza)
 
@@ -55,10 +56,13 @@ def page_not_found(e):
 def name():
     name = None
     form = NameForm()
+
     # Validate the form
     if form.validate_on_submit():  # check if the form is submitted
         name = form.name.data
         form.name.data = ''
+        flash('Form submitted successfully!')
+
     return render_template('name.html', form=form, name=name)
 
 
